@@ -47,9 +47,9 @@ func main () {
 		}
 	}
 
-	end := time.Since(start)
+	p1 := time.Since(start)
 	fmt.Printf("part 1: %v\n", count)
-	fmt.Printf("--- %v ---\n\n", end)
+	fmt.Printf("--- %v ---\n\n", p1)
 
 	// part 2
 	start = time.Now()
@@ -80,8 +80,9 @@ func main () {
 		}
 	}
 
+	p2 := time.Since(start)
 	fmt.Printf("part 2: %v\n", id)
-	fmt.Printf("--- %v ---\n", time.Since(start))
+	fmt.Printf("--- %v ---\n", p2)
 }
 
 func getIds (match []string) (id, posx, posy, posxOffset, posyOffset int) {

@@ -63,8 +63,9 @@ func main () {
 	}
 
 	total = two * three
+	p1 := time.Since(start)
 	fmt.Printf("part 1: %v\n", total)
-	fmt.Printf("--- %v ---\n\n", time.Since(start))
+	fmt.Printf("--- %v ---\n\n", p1)
 
 	// part 2
 	start = time.Now()
@@ -88,8 +89,9 @@ func main () {
 			}
 			
 			if count < 2 {
+				p2 := time.Since(start)
 				fmt.Printf("part 2: %v\n", str)
-				fmt.Printf("--- %v ---\n", time.Since(start))
+				fmt.Printf("--- %v ---\n", p2)
 				os.Exit(0)
 			}
 		}
