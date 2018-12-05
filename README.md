@@ -1,0 +1,1 @@
+My solutions to [Advent of Code](https://adventofcode.com/2018). I'm trying to learn Golang.
