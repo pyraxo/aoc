@@ -2,20 +2,20 @@ package main
 
 import (
 	"fmt"
-	"log"
-	"time"
-	"strings"
 	"io/ioutil"
+	"log"
 	"os"
+	"strings"
+	"time"
 )
 
-func check (e error) {
+func check(e error) {
 	if e != nil {
 		log.Panic(e)
 	}
 }
 
-func main () {
+func main() {
 	file, err := os.Open("./input.txt")
 	check(err)
 	defer file.Close()
@@ -26,7 +26,7 @@ func main () {
 	origList := make([]byte, 50000)
 	_, err = file.Read(origList)
 	check(err)
-	
+
 	charList := append(origList[:0:0], origList...)
 	result := react(charList)
 
@@ -45,8 +45,8 @@ func main () {
 	for str != origStr {
 		origStr = str
 		for i := 65; i < 91; i++ {
-			toReplace1 := string(rune(i)) + string(rune(i + 32))
-			toReplace2 := string(rune(i + 32)) + string(rune(i))
+			toReplace1 := string(rune(i)) + string(rune(i+32))
+			toReplace2 := string(rune(i+32)) + string(rune(i))
 			str = strings.Replace(str, toReplace1, "", -1)
 			str = strings.Replace(str, toReplace2, "", -1)
 			currLen := len(str)
@@ -75,16 +75,16 @@ func main () {
 
 	elapsed = time.Since(start)
 	fmt.Printf("part 2: %v\n", best)
-	fmt.Printf("--- %v ---\n", elapsed) 
+	fmt.Printf("--- %v ---\n", elapsed)
 }
 
-func react (list []byte) (result int) {
+func react(list []byte) (result int) {
 	var count int
-	for count + 1 != len(list) {
+	for count+1 != len(list) {
 		count = 0
 		for i := 1; i < len(list); i++ {
-			if list[i] == list[i - 1] - 32 || list[i - 1] == list[i] - 32 {
-				if len(list) == i + 1 {
+			if list[i] == list[i-1]-32 || list[i-1] == list[i]-32 {
+				if len(list) == i+1 {
 					list = list[:i-1]
 				} else {
 					list = append(list[:i-1], list[i+1:]...)
@@ -98,10 +98,10 @@ func react (list []byte) (result int) {
 	return
 }
 
-func remove (list []byte, ascii int) (newList []byte) {
+func remove(list []byte, ascii int) (newList []byte) {
 	newList = list
 	for i := 0; i < len(newList); {
-		if newList[i] == byte(ascii) || newList[i] == byte(ascii + 32) {
+		if newList[i] == byte(ascii) || newList[i] == byte(ascii+32) {
 			newList = append(newList[:i], newList[i+1:]...)
 			continue
 		}

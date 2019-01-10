@@ -1,18 +1,18 @@
 package main
 
 import (
-	"fmt"
-	"time"
 	"bufio"
-	"strings"
-	"strconv"
-	"regexp"
-	"sort"
+	"fmt"
 	"log"
 	"os"
+	"regexp"
+	"sort"
+	"strconv"
+	"strings"
+	"time"
 )
 
-func check (e error) {
+func check(e error) {
 	if e != nil {
 		log.Fatal(e)
 	}
@@ -20,11 +20,11 @@ func check (e error) {
 
 type Entry struct {
 	time time.Time
-	id int
+	id   int
 }
 
 type Guard struct {
-	mins map[int]int
+	mins     map[int]int
 	totalMin int
 }
 
@@ -59,7 +59,7 @@ func main() {
 		}
 	}
 
-	sort.Slice(store, func (i, j int) bool {
+	sort.Slice(store, func(i, j int) bool {
 		return store[i].time.Before(store[j].time)
 	})
 

@@ -1,29 +1,29 @@
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"log"
-	"time"
-	"strings"
-	"strconv"
 	"os"
+	"strconv"
+	"strings"
+	"time"
 )
 
-func check (e error) {
+func check(e error) {
 	if e != nil {
 		log.Panic(e)
 	}
 }
 
-func abs (n int) int {
+func abs(n int) int {
 	if n < 0 {
 		n = -n
 	}
 	return n
 }
 
-func main () {
+func main() {
 	file, err := os.Open("./input.txt")
 	check(err)
 	defer file.Close()
@@ -50,7 +50,7 @@ func main () {
 			prevNearest := 700
 			var id int
 			for k, coord := range coords {
-				distance := abs(coord[0] - i) + abs(coord[1] - j)
+				distance := abs(coord[0]-i) + abs(coord[1]-j)
 				if distance <= currNearest {
 					prevNearest = currNearest
 					currNearest = distance
@@ -66,7 +66,7 @@ func main () {
 			closestMap[id]++
 		}
 	}
-	
+
 	var currMax int
 	for i := range coords {
 		if omitList[i] {
@@ -88,7 +88,7 @@ func main () {
 		for j := 0; j < 401; j++ {
 			var distance int
 			for _, coord := range coords {
-				distance += abs(coord[0] - i) + abs(coord[1] - j)
+				distance += abs(coord[0]-i) + abs(coord[1]-j)
 			}
 			if distance < 10000 {
 				count++

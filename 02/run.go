@@ -1,22 +1,21 @@
 package main
 
 import (
-	"fmt"
 	"bufio"
-	"strings"
-	"time"
+	"fmt"
 	"log"
 	"os"
+	"strings"
+	"time"
 )
 
-func check (e error) {
+func check(e error) {
 	if e != nil {
 		log.Fatal(e)
 	}
 }
 
-
-func main () {
+func main() {
 	file, err := os.Open("./input.txt")
 	check(err)
 	defer file.Close()
@@ -25,11 +24,11 @@ func main () {
 	start := time.Now()
 
 	var (
-		two int
-		three int
-		isTwo bool
+		two     int
+		three   int
+		isTwo   bool
 		isThree bool
-		total int
+		total   int
 	)
 
 	var store []string
@@ -87,7 +86,7 @@ func main () {
 					break
 				}
 			}
-			
+
 			if count < 2 {
 				p2 := time.Since(start)
 				fmt.Printf("part 2: %v\n", str)

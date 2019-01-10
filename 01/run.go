@@ -1,21 +1,20 @@
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
+	"os"
 	"strconv"
 	"time"
-	"os"
 )
 
-func check (e error) {
+func check(e error) {
 	if e != nil {
 		fmt.Println(e)
 	}
 }
 
-
-func main () {
+func main() {
 	file, err := os.Open("./input.txt")
 	check(err)
 	defer file.Close()

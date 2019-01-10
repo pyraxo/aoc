@@ -1,16 +1,16 @@
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"os"
-	"time"
-	"strings"
-	"strconv"
 	"sort"
+	"strconv"
+	"strings"
+	"time"
 )
 
-func altSolution () {
+func altSolution() {
 	file, _ := os.Open("./input.txt")
 	defer file.Close()
 
@@ -61,7 +61,9 @@ func altSolution () {
 	// Finding highest count
 	var maxCount, maxMin int
 	for min, count := range guards[maxGuard] {
-		if min == -1 { continue }
+		if min == -1 {
+			continue
+		}
 		if count > maxCount {
 			maxCount = count
 			maxMin = min

@@ -1,23 +1,22 @@
 package main
 
 import (
-	"fmt"
 	"bufio"
-	"time"
-	"regexp"
-	"strconv"
+	"fmt"
 	"log"
 	"os"
+	"regexp"
+	"strconv"
+	"time"
 )
 
-func check (e error) {
+func check(e error) {
 	if e != nil {
 		log.Fatal(e)
 	}
 }
 
-
-func main () {
+func main() {
 	file, err := os.Open("./input.txt")
 	check(err)
 	defer file.Close()
@@ -31,8 +30,8 @@ func main () {
 		re := regexp.MustCompile(`#(\d+) @ (\d+),(\d+): (\d+)x(\d+)`)
 		match := re.FindStringSubmatch(scanner.Text())
 		_, x, y, xOff, yOff := getIds(match)
-		for i := x; i < x + xOff; i++ {
-			for j := y; j < y + yOff; j++ {
+		for i := x; i < x+xOff; i++ {
+			for j := y; j < y+yOff; j++ {
 				square[i][j]++
 			}
 		}
@@ -63,8 +62,8 @@ func main () {
 		curr, x, y, xOff, yOff := getIds(match)
 
 		var skip bool
-		for i := x; i < x + xOff; i++ {
-			for j := y; j < y + yOff; j++ {
+		for i := x; i < x+xOff; i++ {
+			for j := y; j < y+yOff; j++ {
 				if square[i][j] > 1 {
 					skip = true
 					break
@@ -85,7 +84,7 @@ func main () {
 	fmt.Printf("--- %v ---\n", p2)
 }
 
-func getIds (match []string) (id, posx, posy, posxOffset, posyOffset int) {
+func getIds(match []string) (id, posx, posy, posxOffset, posyOffset int) {
 	id, _ = strconv.Atoi(match[1])
 	posx, _ = strconv.Atoi(match[2])
 	posy, _ = strconv.Atoi(match[3])
