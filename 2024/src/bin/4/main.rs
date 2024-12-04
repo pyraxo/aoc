@@ -81,7 +81,6 @@ fn check_char(
     board: &Vec<Vec<String>>,
     i: usize,
     j: usize,
-    k: usize,
     char: &str,
     positions: &[(i32, i32); 2],
 ) -> bool {
@@ -104,8 +103,8 @@ fn solve2(board: &Vec<Vec<String>>) -> io::Result<()> {
         for i in 0..board.len() {
             if board[i][j] == "A" {
                 for k in 0..M_POSITIONS.len() {
-                    if check_char(board, i, j, k, "M", &M_POSITIONS[k])
-                        && check_char(board, i, j, k, "S", &S_POSITIONS[k])
+                    if check_char(board, i, j, "M", &M_POSITIONS[k])
+                        && check_char(board, i, j, "S", &S_POSITIONS[k])
                     {
                         count += 1;
                     }
