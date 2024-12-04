@@ -3,7 +3,7 @@ use std::io;
 use aoc2024::util::read_input;
 
 fn solve1() -> io::Result<()> {
-    let lines = read_input("1")?;
+    let lines = read_input("1", true)?;
     let mut x: Vec<i32> = vec![];
     let mut y: Vec<i32> = vec![];
 
@@ -25,7 +25,7 @@ fn solve1() -> io::Result<()> {
 }
 
 fn solve2() -> io::Result<()> {
-    let lines = read_input("1")?;
+    let lines = read_input("1", true)?;
     let mut x: Vec<i32> = vec![];
     let mut y: Vec<i32> = vec![0; 100000];
 

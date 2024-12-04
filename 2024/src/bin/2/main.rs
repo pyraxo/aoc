@@ -26,7 +26,7 @@ fn is_valid(split: &Vec<i32>) -> bool {
 }
 
 fn solve1() -> io::Result<()> {
-    let lines = read_input("2")?;
+    let lines = read_input("2", true)?;
     let mut counter = 0;
 
     for split in lines {
@@ -39,7 +39,7 @@ fn solve1() -> io::Result<()> {
 }
 
 fn solve2() -> io::Result<()> {
-    let lines = read_input("2")?;
+    let lines = read_input("2", true)?;
     let mut counter = 0;
 
     for split in lines {

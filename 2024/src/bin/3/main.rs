@@ -5,7 +5,7 @@ use aoc2024::util::read_full_input;
 
 fn solve1() -> io::Result<()> {
     let re = Regex::new(r"mul\((\d+),(\d+)\)").unwrap();
-    let text = &read_full_input("3")?;
+    let text = &read_full_input("3", true)?;
     let mut sum = 0;
     let mut count = 0;
 
@@ -21,7 +21,7 @@ fn solve1() -> io::Result<()> {
 
 fn solve2() -> io::Result<()> {
     let re = Regex::new(r"(mul\(\d+,\d+\))|(do\(\))|(don't\(\))").unwrap();
-    let text = &read_full_input("3")?;
+    let text = &read_full_input("3", true)?;
     let mut sum = 0;
     let mut count = 0;
     let mut do_count = true;
