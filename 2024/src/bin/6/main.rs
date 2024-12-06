@@ -1,7 +1,4 @@
-use std::{
-    collections::{HashMap, HashSet},
-    io,
-};
+use std::{collections::HashSet, io};
 
 use aoc2024::util::read_char_input;
 
@@ -44,7 +41,6 @@ fn main() -> io::Result<()> {
         let next_y = (curr_y as i32 + DIRECTIONS[dir].1) as usize;
         // println!("{} {}", next_x, next_y);
         if board[next_x][next_y] == 1 {
-            // collect points we bump into obstacles
             dir = (dir + 1) % 4;
         } else {
             possible_obstacles.push((next_x, next_y));
@@ -67,12 +63,9 @@ fn main() -> io::Result<()> {
         if test_board[i][j] == 0 && (i, j) != start_pos {
             test_board[i][j] = 1;
             dir = 0;
-            let mut steps = 0;
-            let mut visited: HashMap<(usize, usize, usize), usize> = HashMap::new();
+            let mut visited: HashSet<(usize, usize, usize)> = HashSet::new();
             loop {
-                if visited.contains_key(&(curr_x, curr_y, dir))
-                    && steps - visited[&(curr_x, curr_y, dir)] > 0
-                {
+                if visited.contains(&(curr_x, curr_y, dir)) {
                     obstacles.insert((i, j));
                     break;
                 }
@@ -81,13 +74,12 @@ fn main() -> io::Result<()> {
                 }
                 let next_x = (curr_x as i32 + DIRECTIONS[dir].0) as usize;
                 let next_y = (curr_y as i32 + DIRECTIONS[dir].1) as usize;
-                visited.insert((curr_x, curr_y, dir), steps);
+                visited.insert((curr_x, curr_y, dir));
                 if test_board[next_x][next_y] == 1 {
                     dir = (dir + 1) % 4;
                 } else {
                     curr_x = next_x;
                     curr_y = next_y;
-                    steps += 1;
                 }
             }
             test_board[i][j] = 0;
