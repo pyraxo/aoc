@@ -1,7 +1,4 @@
-use std::{
-    collections::{HashMap, VecDeque},
-    io,
-};
+use std::{collections::HashMap, io};
 
 use aoc2024::util::read_full_input;
 
