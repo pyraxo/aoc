@@ -11,7 +11,7 @@ const IS_TEST: bool = false;
 
 type Memo = HashMap<u64, u64>;
 
-fn blink<'a>(memo: &'a mut Memo) -> &'a mut Memo {
+fn blink(memo: &mut Memo) -> &mut Memo {
     for (key, number) in memo.clone().iter() {
         let key_str = key.to_string();
         if key_str == "0" {
