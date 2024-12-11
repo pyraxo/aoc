@@ -15,7 +15,6 @@ fn blink(memo: &mut Memo) -> &mut Memo {
     for (key, number) in memo.clone().iter() {
         let key_str = key.to_string();
         if key_str == "0" {
-            memo.entry(*key).and_modify(|v| *v -= number).or_insert(0);
             memo.entry(1)
                 .and_modify(|v| *v += number)
                 .or_insert(*number);
@@ -28,14 +27,13 @@ fn blink(memo: &mut Memo) -> &mut Memo {
             memo.entry(second_num)
                 .and_modify(|v| *v += number)
                 .or_insert(*number);
-            memo.entry(*key).and_modify(|v| *v -= number);
         } else {
             let new_key = key * 2024;
             memo.entry(new_key)
                 .and_modify(|v| *v += number)
                 .or_insert(*number);
-            memo.entry(*key).and_modify(|v| *v -= number);
         }
+        memo.entry(*key).and_modify(|v| *v -= number);
     }
     memo
 }
