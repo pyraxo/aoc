@@ -40,4 +40,13 @@ pub mod util {
         }
         Ok(result)
     }
+
+    pub fn read_board(day: &str, is_sample: bool) -> Result<Vec<Vec<String>>, io::Error> {
+        let reader = get_reader(day, is_sample)?;
+        let mut result = vec![];
+        for line in reader.lines() {
+            result.push(line?.chars().map(|c| c.to_string()).collect());
+        }
+        Ok(result)
+    }
 }
